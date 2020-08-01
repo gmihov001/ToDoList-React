@@ -13,9 +13,11 @@ ul {
 
 li {
     box-shadow: 1px 2px 5px gray;
-    padding: 10px;
+    padding: 10px 30px;
     color: white;
     margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 span {
@@ -27,7 +29,7 @@ span {
 
 li:hover span {
     color: red;
-    border: 1px solid red;
+    border: 3px solid red;
     font-weight: 700;
 }    
 
@@ -36,5 +38,5 @@ li:hover span {
     padding: 100px;
     width: 600px;
     background: lightgray;
-    box-shadow: 2px 3px 10px darkgray;
+    box-shadow: 3px 4px 20px black;
 }

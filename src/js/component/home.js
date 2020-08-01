@@ -49,7 +49,9 @@ export class Home extends React.Component {
 						return (
 							<li key={i}>
 								{task}{" "}
-								<span onClick={() => this.deleteTask(i)}>
+								<span
+									type="button"
+									onClick={() => this.deleteTask(i)}>
 									{" "}
 									x{" "}
 								</span>
