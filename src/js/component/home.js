@@ -35,7 +35,7 @@ export class Home extends React.Component {
 
 	render() {
 		return (
-			<div className="text-center mt-5">
+			<div className="to-do-sheet text-center mt-5">
 				<h1>TO DO:</h1>
 				<input
 					autoFocus={true}
@@ -49,9 +49,7 @@ export class Home extends React.Component {
 						return (
 							<li key={i}>
 								{task}{" "}
-								<span
-									onClick={() => this.deleteTask(i)}
-									style={{ border: "1px solid red" }}>
+								<span onClick={() => this.deleteTask(i)}>
 									{" "}
 									X{" "}
 								</span>
