@@ -11,28 +11,37 @@ export class Home extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			tasks: ["First task", "Second task"]
+			tasks: ["First task", "Second task"],
+			inputTask: null
 		};
 	}
 
 	saveTask = e => {
-		console.log(e);
+		if (e.keyCode == 13) {
+			let newTasks = this.state.tasks.concat(e.target.value);
+			this.setState({
+				tasks: newTasks,
+				inputTask: ""
+			});
+		}
 	};
 
 	render() {
-		var { tasks } = this.state;
+		var { tasks, inputTask } = this.state;
 		return (
 			<div className="text-center mt-5">
 				<h1>TO DO:</h1>
 				<input
 					type="text"
+					value={inputTask}
 					placeholder="What needs to be done?"
+					onChange={e => this.setState({ inputTask: e.target.value })}
 					onKeyUp={this.saveTask}
 				/>
 				<ul>
-					{tasks.map(task => {
+					{tasks.map((task, i) => {
 						return (
-							<li>
+							<li key={i}>
 								{task} <span> X </span>
 							</li>
 						);
