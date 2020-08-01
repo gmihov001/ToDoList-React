@@ -27,29 +27,30 @@ export class Home extends React.Component {
 	};
 
 	deleteTask = id => {
-		console.log(id);
+		const updatedTasks = this.state.tasks.filter(
+			task => task != this.state.tasks[id]
+		);
+		this.setState({ tasks: updatedTasks });
 	};
 
 	render() {
-		var { tasks, inputTask } = this.state;
-		const { setState, saveTask, deleteTask } = this;
 		return (
 			<div className="text-center mt-5">
 				<h1>TO DO:</h1>
 				<input
-					type="text"
-					value={inputTask}
+					autoFocus={true}
 					placeholder="What needs to be done?"
-					onChange={e => setState({ inputTask: e.target.value })}
-					onKeyUp={saveTask}
+					value={this.state.inputTask}
+					onChange={e => this.setState({ inputTask: e.target.value })}
+					onKeyUp={this.saveTask}
 				/>
 				<ul>
-					{tasks.map((task, i) => {
+					{this.state.tasks.map((task, i) => {
 						return (
 							<li key={i}>
 								{task}{" "}
 								<span
-									onClick={() => deleteTask(i)}
+									onClick={() => this.deleteTask(i)}
 									style={{ border: "1px solid red" }}>
 									{" "}
 									X{" "}
