@@ -51,7 +51,7 @@ export class Home extends React.Component {
 								{task}{" "}
 								<span onClick={() => this.deleteTask(i)}>
 									{" "}
-									X{" "}
+									x{" "}
 								</span>
 							</li>
 						);
