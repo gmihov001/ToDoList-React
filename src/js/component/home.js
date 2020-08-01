@@ -12,7 +12,7 @@ export class Home extends React.Component {
 		super();
 		this.state = {
 			tasks: ["First task", "Second task"],
-			inputTask: null
+			inputTask: ""
 		};
 	}
 
@@ -26,8 +26,13 @@ export class Home extends React.Component {
 		}
 	};
 
+	deleteTask = id => {
+		console.log(id);
+	};
+
 	render() {
 		var { tasks, inputTask } = this.state;
+		const { setState, saveTask, deleteTask } = this;
 		return (
 			<div className="text-center mt-5">
 				<h1>TO DO:</h1>
@@ -35,14 +40,20 @@ export class Home extends React.Component {
 					type="text"
 					value={inputTask}
 					placeholder="What needs to be done?"
-					onChange={e => this.setState({ inputTask: e.target.value })}
-					onKeyUp={this.saveTask}
+					onChange={e => setState({ inputTask: e.target.value })}
+					onKeyUp={saveTask}
 				/>
 				<ul>
 					{tasks.map((task, i) => {
 						return (
 							<li key={i}>
-								{task} <span> X </span>
+								{task}{" "}
+								<span
+									onClick={() => deleteTask(i)}
+									style={{ border: "1px solid red" }}>
+									{" "}
+									X{" "}
+								</span>
 							</li>
 						);
 					})}
