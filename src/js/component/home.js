@@ -53,15 +53,11 @@ export class Home extends React.Component {
 			"https://3000-d40b0105-12e0-4a5f-bd75-3800aecbbb22.ws-us02.gitpod.io/todos/georgi/" +
 				id,
 			{
-				method: "DELETE",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(newTodo)
+				method: "DELETE"
 			}
 		)
 			.then(resp => resp.json())
-			.then(response => this.setState({ tasks: response, inputTask: "" }))
+			.then(response => this.setState({ tasks: response }))
 			.catch(err => console.log("There was the following error: ", err));
 		// const updatedTasks = this.state.tasks.filter(
 		// 	task => task != this.state.tasks[id]
