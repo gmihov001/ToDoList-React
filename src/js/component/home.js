@@ -27,11 +27,28 @@ export class Home extends React.Component {
 
 	saveTask = e => {
 		if (e.keyCode == 13) {
-			let newTasks = this.state.tasks.concat(e.target.value);
-			this.setState({
-				tasks: newTasks,
-				inputTask: ""
-			});
+			var newTodo = { label: inputTask, done: false };
+			fetch(
+				"https://3000-d40b0105-12e0-4a5f-bd75-3800aecbbb22.ws-us02.gitpod.io/todos/georgi",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(newTodo)
+				}
+			)
+				.then(resp => resp.json())
+				.then(response => this.setState({ tasks: response }))
+				.catch(err =>
+					console.log("There was the following error: ", err)
+				);
+
+			// let newTasks = this.state.tasks.concat(e.target.value);
+			// this.setState({
+			// 	tasks: newTasks,
+			// 	inputTask: ""
+			// });
 		}
 	};
 
