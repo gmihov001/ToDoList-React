@@ -43,8 +43,14 @@ li:hover span {
 
 .to-do-sheet input {
     border-radius: 10px;
+    padding: 5px 10px;
 }
 
 .to-do-sheet h1 {
-    color: whitesmoke;
+    color: royalblue;
+}
+
+input:focus {
+    outline: none;
+    border: none;
 }
