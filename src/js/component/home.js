@@ -49,10 +49,24 @@ export class Home extends React.Component {
 	};
 
 	deleteTask = id => {
-		const updatedTasks = this.state.tasks.filter(
-			task => task != this.state.tasks[id]
-		);
-		this.setState({ tasks: updatedTasks });
+		fetch(
+			"https://3000-d40b0105-12e0-4a5f-bd75-3800aecbbb22.ws-us02.gitpod.io/todos/georgi/" +
+				id,
+			{
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(newTodo)
+			}
+		)
+			.then(resp => resp.json())
+			.then(response => this.setState({ tasks: response, inputTask: "" }))
+			.catch(err => console.log("There was the following error: ", err));
+		// const updatedTasks = this.state.tasks.filter(
+		// 	task => task != this.state.tasks[id]
+		// );
+		// this.setState({ tasks: updatedTasks });
 	};
 
 	render() {
@@ -73,7 +87,7 @@ export class Home extends React.Component {
 								{task.label}{" "}
 								<span
 									type="button"
-									onClick={() => this.deleteTask(i)}>
+									onClick={() => this.deleteTask(task.id)}>
 									{" "}
 									x{" "}
 								</span>
