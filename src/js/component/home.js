@@ -36,7 +36,7 @@ export class Home extends React.Component {
 	render() {
 		return (
 			<div className="to-do-sheet text-center mt-5">
-				<h1>My To Dd List:</h1>
+				<h1>My To Do List:</h1>
 				<input
 					autoFocus={true}
 					placeholder="What needs to be done?"
