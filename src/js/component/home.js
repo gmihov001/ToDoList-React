@@ -16,6 +16,15 @@ export class Home extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+		fetch(
+			"https://3000-d40b0105-12e0-4a5f-bd75-3800aecbbb22.ws-us02.gitpod.io/todos/georgi"
+		)
+			.then(resp => resp.json())
+			.then(response => this.setState({ tasks: response }))
+			.catch(err => console.log("There was the following error: ", err));
+	}
+
 	saveTask = e => {
 		if (e.keyCode == 13) {
 			let newTasks = this.state.tasks.concat(e.target.value);
@@ -48,7 +57,7 @@ export class Home extends React.Component {
 					{this.state.tasks.map((task, i) => {
 						return (
 							<li key={i}>
-								{task}{" "}
+								{task.label}{" "}
 								<span
 									type="button"
 									onClick={() => this.deleteTask(i)}>
