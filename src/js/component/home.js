@@ -1,13 +1,6 @@
 import React from "react";
 
 export class Home extends React.Component {
-	//input field with enter key submission
-	//array to hold tasks
-	//map the array - for each element, display it in an <li>
-	//add delete functionality - with event listener onclick
-	//delete icon - to show on hover
-	//when no tasks: display "No tasks, add a task"
-
 	constructor() {
 		super();
 		this.state = {
@@ -59,10 +52,6 @@ export class Home extends React.Component {
 			.then(resp => resp.json())
 			.then(response => this.setState({ tasks: response }))
 			.catch(err => console.log("There was the following error: ", err));
-		// const updatedTasks = this.state.tasks.filter(
-		// 	task => task != this.state.tasks[id]
-		// );
-		// this.setState({ tasks: updatedTasks });
 	};
 
 	render() {
